@@ -1,10 +1,8 @@
 $(document).ready(function() {
 
 	var nav = $('.navbar-fixed-top');
-
 	var distancia = $('.navbar-fixed-top').offset();
-
-	if ( distancia.top > 0) {
+	if ( distancia.top >= 300) {
 		nav.removeClass('normal').addClass('efecto');
 	}
 
@@ -21,14 +19,9 @@ $(document).ready(function() {
 
 	var height = $(window).height(); 
 	var breakpoint = 767; 
-
 	if($(document).width() >= breakpoint) {
 		$('section#principal').css('height', height +'px');
 	}
-
-
-
-	
 
 	$('section#pantallas a').on('click',function() {
 		$('#modal img').attr('src', $(this).attr('data-image-url') );
