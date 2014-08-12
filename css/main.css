@@ -36,7 +36,7 @@ h2.parallax {
 }
 
 
-.separador {
+.separator {
 	width:40px;
 	height:4px;
 	display: block;
@@ -88,10 +88,12 @@ h2.parallax {
 .nav>li>a:focus {
 	background-color: transparent;
 }
+
+/* estados del menu **/
 .normal {
 	transition: 1s all ease;
 }
-.efecto {
+.navanimation {
 	background-color: #123156;
 	min-height: 30px;
 	box-shadow: 0 0 10px black;
@@ -101,7 +103,7 @@ h2.parallax {
 
 /** #PRINCIPAL **/
 
-section#principal {
+section.top {
 	min-height: 700px;
 	padding-top: 100px;
 	background: rgb(30,61,90); /* Old browsers */
@@ -113,14 +115,14 @@ section#principal {
 	background: linear-gradient(to bottom,  rgba(30,61,90,1) 0%,rgba(12,34,59,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e3d5a', endColorstr='#0c223b',GradientType=0 ); /* IE6-9 */
 }
-section#principal img {
+section.top img {
 	margin: 0 auto;
 }
 
 
 /** #APP **/
 
-section#app .social {
+section.app .icon {
 	width:150px;
 	height:150px;
 	border-radius: 50%;
@@ -128,26 +130,26 @@ section#app .social {
 	margin: 0 auto;
 	line-height: 180px;
 }
-section#app .social i {
+section.app .icon i {
 	color:#ffffff;
 	font-size: 3em;
 }
 
 
-/** #CARACTERISTICAS **/
+/** #features **/
 
-section#caracteristicas p {
+section.features p {
 	font-size:.9em;
 	color:#858585;
 }
-section#caracteristicas img#appCentral {
+section.features img#appCentral {
 	margin: 0 auto;
 }
-section#caracteristicas .caracteristica {
+section.features .feature {
 	margin-bottom: 20px;
 	clear:both;
 }
-section#caracteristicas .icono {
+section.features .icon {
 	width:120px;
 	height:120px;
 	border-radius: 50%;
@@ -158,12 +160,12 @@ section#caracteristicas .icono {
 	color:#ffffff;
 }
 
-section#caracteristicas .icono i {
+section.features .icon i {
 	font-size: 2.6em;
 	color:#ffffff;
 }
 
-/** PANTALLAS **/
+/** SCREENSHOTS **/
 
 div.modal-body {
 	text-align: center;
@@ -183,13 +185,13 @@ section#parallax {
 	background-size: cover;
 }
 
-/** DESCARGAR **/
+/** download **/
 
-section#descargar div.contenidoDescarga {
+section#download div.downloadContent {
 	height:700px;
 }
 
-section#descargar div.phone {
+section#download div.phone {
 	width:50%;
 	float: left;
 	height:100%;
@@ -201,17 +203,17 @@ section#descargar div.phone {
 
 }
 
-section#descargar div.derechaVacio {
+section#download div.empty {
 	width:50%;
 	background-color: #f5f5f5;
 	float: right;
 	height:100%;
 	z-index: 2;
-	background-image: url(../img/descargaAppBG.png);
+	background-image: url(../img/downloadBG.png);
 	background-repeat: no-repeat;
 	background-position: bottom right;
 }
-section#descargar .descarga {
+section#download .download {
 	position: absolute;
 	left:0;
 	right:0;
@@ -220,7 +222,7 @@ section#descargar .descarga {
 	top: 50px;
 }
 
-section#descargar .plataformas > div {
+section#download .platforms > div {
 	border-radius: 20px;
 	border: 3px solid #0c243d;
 	padding: 11px 0;
@@ -230,50 +232,50 @@ section#descargar .plataformas > div {
 	color:#0c243d;
 }
 
-section#descargar .plataformas > div i {
+section#download .platforms > div i {
 	font-size: 2.5em;
 	position:absolute;
 	left: 20px;
 	top:10px;
 }
 
-section#descargar .plataformas > div span {
+section#download .platforms > div span {
 	font-weight: bold;
 }
 
 
 
 
-/** SOPORTE **/
+/** Support **/
 
-section#soporte h1 {
+section#support h1 {
 	color:#ffffff;
 }
-section#soporte .separador {
+section#support .separator {
 	background-color: #ffffff;
 }
-section#soporte p {
+section#support p {
 	font-size: 1.6em;
 	color:white;
 	margin-bottom: 20px;
 }
-section#soporte .campos {
+section#support .field {
 	background-color: #123156;
 	border: 2px solid #ffffff;
 	border-radius: 10px;
 	color:#ffffff;
 }
-section#soporte form {
+section#support form {
 	margin-top: 30px;
 }
-section#soporte input {
+section#support input {
 	min-height: 50px;
 	margin-bottom: 20px;
 }
-section#soporte textarea {
+section#support textarea {
 	min-height: 200px;
 }
-section#soporte .btn.btn-default {
+section#support .btn.btn-default {
 	background:white;
 	border-radius: 14px;
 	padding: 5px 43px;
@@ -281,7 +283,7 @@ section#soporte .btn.btn-default {
 	text-transform: uppercase;
 }
 
-#correcto {
+#ok {
 	display:none;
 	background-color: white;
 	padding: 20px;
@@ -330,27 +332,59 @@ section#soporte .btn.btn-default {
 	color:#ffffff!important;
 }
 
-@media(max-width: 767px) {
-	section#principal {
-		height: auto;
+
+
+@media(max-width: 500px) {
+	section#download div.phone {
+		width:100%;
+	}
+	section#features > section.col-xs-6 {
+		width:100%!important;
+	}
+	section#features > .col-xs-6 {
+		width:100%;
+	}
+	section#features .caracteristica {
+		min-height: initial;
+		text-align: center;
+	}
+	section#features .icono {
+		display:none;
+	}
+	section#download div.empty {
+		display:none;
+	}
+	section#download .download {
+		position: relative;
+	}
+	div.download .col-xs-offset-6 {
+		width:100%;
+		margin:0;
+	}
+}
+
+
+@media(max-width:767px){
+	section#top {
+		height: auto!important;
 		min-height: initial;
 	}
 	.navbar-default .navbar-collapse {
 		background-color: #123156;
 	}
-	section#caracteristicas .caracteristicas {
+	section#features .feature {
 		min-height: 150px;
 		text-align: center;
 	}
 
-	section#descargar .plataformas > div {
+	section#download .platforms > div {
 		margin-bottom: 20px;
 		padding: 21px 0 ;
 	}
-	section#descargar div.phone {
+	section#download div.phone {
 		height:auto;
 	}
-	section#descargar div.contenidoDescarga {
+	section#download div.downloadContent {
 		height:auto;
 	}
 	section#parallax {
@@ -358,31 +392,4 @@ section#soporte .btn.btn-default {
 	}
 }
 
-@media(max-width: 500px) {
-	section#descargar div.phone {
-		width:100%;
-	}
-	section#caracteristicas > section.col-xs-6 {
-		width:100%!important;
-	}
-	section#caracteristicas > .col-xs-6 {
-		width:100%;
-	}
-	section#caracteristicas .caracteristica {
-		min-height: initial;
-		text-align: center;
-	}
-	section#caracteristicas .icono {
-		display:none;
-	}
-	section#descargar div.derechaVacio {
-		display:none;
-	}
-	section#descargar .descarga {
-		position: relative;
-	}
-	div.descarga .col-xs-offset-6 {
-		width:100%;
-		margin:0;
-	}
-}
+
