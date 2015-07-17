@@ -106,52 +106,52 @@ $(document).ready(function() {
 
 // VALIDACIÓN FORMULARIO
 
-$('#supportForm').bootstrapValidator({
-	message: "That´s no valid!",
-	feedbackIcons: {
-		valid: 'glyphicon glyphicon-ok',
-		invalid: 'glyphicon glyphicon-remove',
-		validating: 'glyphicon glyphicon-refresh'
-	},
-	fields: {
-		name: {
-			validators: {
-				notEmpty: {
-					message: "This field is mandatory and cannot be empty"
+			$('#supportForm').bootstrapValidator({
+				message: "That´s no valid!",
+				feedbackIcons: {
+					valid: 'glyphicon glyphicon-ok',
+					invalid: 'glyphicon glyphicon-remove',
+					validating: 'glyphicon glyphicon-refresh'
 				},
-			}
-		},
-		email: {
-			validators: {
-				notEmpty: {
-					message: "This field is mandatory and cannot be empty"
-				},
-				emailAddress: {
-					message: "That doesn´t look like an e-mail address"
+				fields: {
+					name: {
+						validators: {
+							notEmpty: {
+								message: "This field is mandatory and cannot be empty"
+							},
+						}
+					},
+					email: {
+						validators: {
+							notEmpty: {
+								message: "This field is mandatory and cannot be empty"
+							},
+							emailAddress: {
+								message: "That doesn´t look like an e-mail address"
+							}
+						}
+					},
+					messageField: {
+						validators: {
+							notEmpty: {
+								message: "The Message Cannot be empty!"
+							}
+						}
+					}
 				}
-			}
-		},
-		messageField: {
-			validators: {
-				notEmpty: {
-					message: "The Message Cannot be empty!"
-				}
-			}
-		}
-	}
-}).on('success.form.bv', function(e) {
-	e.preventDefault();
+			}).on('success.form.bv', function(e) {
+				e.preventDefault();
 
-	var $form = $(e.target);
+				var $form = $(e.target);
 
-	var bv = $form.data('bootstrapValidator');
+				var bv = $form.data('bootstrapValidator');
 
-	$.post($form.attr('action'), $form.serialize(), function(result) {
-		$('#ok').fadeIn();
-		console.log(result);
-	}, 'json' );
+				$.post($form.attr('action'), $form.serialize(), function(result) {
+					$('#ok').fadeIn();
+					console.log(result);
+				}, 'json' );
 
-});
+			});
 
 
 });
