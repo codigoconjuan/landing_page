@@ -22,8 +22,8 @@ $(document).ready(function() {
 
 
 
-	var height = $(window).height(); 
-	var breakpoint = 767; 
+	var height = $(window).height();
+	var breakpoint = 767;
 	if($(document).width() >= breakpoint) {
 		$('section#top').css('height', height +'px');
 	}
@@ -106,58 +106,52 @@ $(document).ready(function() {
 
 // VALIDACIÓN FORMULARIO
 
-   $('#support')
-        .bootstrapValidator({
-            message: 'This value is not valid',
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-            fields: {
-                name: {
-                    validators: {
-                        notEmpty: {
-                            message: 'This field is required and cannot be empty'
-                        },
-                    }
-                },
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The email is required and cannot be empty'
-                        },
-                        emailAddress: {
-                            message: 'The input is not a valid email address'
-                        }
-                    }
-                },
-                message: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The Message is required and cannot be empty'
-                        }
-                    }
-                }
-            }
-        })
-        .on('success.form.bv', function(e) {
-            // Prevent form submission
-            e.preventDefault();
+$('#supportForm').bootstrapValidator({
+	message: "That´s no valid!",
+	feedbackIcons: {
+		valid: 'glyphicon glyphicon-ok',
+		invalid: 'glyphicon glyphicon-remove',
+		validating: 'glyphicon glyphicon-refresh'
+	},
+	fields: {
+		name: {
+			validators: {
+				notEmpty: {
+					message: "This field is mandatory and cannot be empty"
+				},
+			}
+		},
+		email: {
+			validators: {
+				notEmpty: {
+					message: "This field is mandatory and cannot be empty"
+				},
+				emailAddress: {
+					message: "That doesn´t look like an e-mail address"
+				}
+			}
+		},
+		messageField: {
+			validators: {
+				notEmpty: {
+					message: "The Message Cannot be empty!"
+				}
+			}
+		}
+	}
+}).on('success.form.bv', function(e) {
+	e.preventDefault();
 
-            // Get the form instance
-            var $form = $(e.target);
+	var $form = $(e.target);
 
-            // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
+	var bv = $form.data('bootstrapValidator');
 
-            // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
-                $('#ok').fadeIn();
-                 console.log(result);
-            }, 'json');
-        });
+	$.post($form.attr('action'), $form.serialize(), function(result) {
+		$('#ok').fadeIn();
+		console.log(result);
+	}, 'json' );
 
+});
 
 
 });
